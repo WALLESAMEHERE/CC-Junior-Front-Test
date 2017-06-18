@@ -36,13 +36,19 @@ window.onload  = function(){
 				    } */
 				    let count = 0;
 				    var pos = stringToZmiany.indexOf(tabla[i][0]);
+				    var scorejest = 0;
 				   	while(pos > -1){
 				   		++count;
 				   		pos = stringToZmiany.indexOf(tabla[i][0], ++pos);
 				   		stringLength -= tabla[i][0].length;
+				   		for (var j = 0; j<tabla.length; j++) {
+				   			if(tabla[i][0].length > 2 && tabla[i][0].includes(tabla[j][0]) && stringToZmiany.includes(tabla[j][0])){
+				   				result -= 2;
+				   			}
+				   		}
 				   	}
 				   	result += count * tabla[i][1];
-				   	//console.log(tabla[i][0],count,result,stringLength)
+				   	//=console.log(tabla[i][0],count,result,stringLength)
 				}	
 				result -= stringLength;
 				// console.log(stringToZmiany,result,stringLength);
