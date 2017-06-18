@@ -27,35 +27,36 @@ window.onload  = function(){
 						var result = 0;
 						var stringToZmiany = rightSpell;
 						var count = 0;
+						var stringLength = stringToZmiany.length;
 				for (var i = 0; i<tabla.length; i++) {
 				   /* if (stringToZmiany.indexOf(tabla[i][0]) != -1) {
 				    	stringToZmiany = stringToZmiany.replace(tabla[i][0] ,"")
 				        	result += tabla[i][1];
 				        	console.log(tabla[i][0],stringToZmiany,result)
 				    } */
+				    let count = 0;
 				    var pos = stringToZmiany.indexOf(tabla[i][0]);
 				   	while(pos > -1){
 				   		++count;
 				   		pos = stringToZmiany.indexOf(tabla[i][0], ++pos);
-				   		console.log(tabla[i][0]);
+				   		stringLength -= tabla[i][0].length;
+				   		for (var j = 0; j<tabla.length; j++) {
+				   			var oldstring = tabla[j][0];
+				   			if(tabla[i][0].length > 2 && oldstring.includes(tabla[j][0])){
+				   				console.log(tabla[j][0]);
+				   			} 
+				   		}
 				   	}
-				   	console.log(count);
-				}
-				result -= stringToZmiany.length;
-				document.getElementById('doneDamage').innerHTML = result;
-				
+				   	result += count * tabla[i][1];
+				   	//console.log(tabla[i][0],count,result,stringLength)
+				}	
+				result -= stringLength;
+				// console.log(stringToZmiany,result,stringLength);
+				document.getElementById('doneDamage').innerHTML = result;	
 			}
 			else{
 				console.log('KASZANA');
 			}
-
 		}
 	});
-
-	var obj = {
-		'fe' :1,
-		'ai' :3,
-		'je' :2
-	}
-	console.log(obj);
 }
