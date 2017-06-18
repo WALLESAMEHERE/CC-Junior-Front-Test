@@ -40,12 +40,6 @@ window.onload  = function(){
 				   		++count;
 				   		pos = stringToZmiany.indexOf(tabla[i][0], ++pos);
 				   		stringLength -= tabla[i][0].length;
-				   		for (var j = 0; j<tabla.length; j++) {
-				   			var oldstring = tabla[j][0];
-				   			if(tabla[i][0].length > 2 && oldstring.includes(tabla[j][0])){
-				   				console.log(tabla[j][0]);
-				   			} 
-				   		}
 				   	}
 				   	result += count * tabla[i][1];
 				   	//console.log(tabla[i][0],count,result,stringLength)
