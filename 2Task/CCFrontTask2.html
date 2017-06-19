@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- JavaScript -->
   <script type="text/javascript" src="app.js"></script>
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
   <!-- STYLE CSS -->
   <style type="text/css">
       .container{
@@ -17,15 +20,52 @@
         align-items: center;
         -webkit-justify-content: center;
         justify-content: center;
+        flex-direction:column;
+      }
+      h1{
+        font-size:3.5em;
+        
+        color:#dbd6c7;
+        background: -webkit-linear-gradient(silver, #a40fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family: 'Dancing Script', cursive;
+      }
+      input{
+        font-size: 1.5em;
+        border:3px solid #42f4b6;
+        border-radius: 5px;
+        box-shadow: 5px 5px 5px grey;
+        outline: none;
+        padding: 10px 20px;
+        text-align: center;
+      }
+      button{
+        font-weight: bolder;
+        color:white;
+        background-color: #ff9191;
+        outline: none;
+        font-size: 1.7em;
+        font-family: 'Poiret One', cursive;
+        margin:20px 0;
+        padding: 10px 25px;
+        border:2px solid #f27d7d;
+        transition: .3s;
+      }
+      button:hover{
+        background-color: #ffb2b2;
       }
       .boxWithDmg{
-      
+        color:rgb(212, 170, 91);
+      font-size: 3em;
+      font-weight: bolder;
 
       }
   </style>
 </head>
 <body>
   <div class="container">
+      <h1> Twój magiczny czar </h1>
       <input type="text" placeholder="Wpisz zaklęcie" id="spell">
       <button id="castSpell">Rzuć czar</button>
       <br>
