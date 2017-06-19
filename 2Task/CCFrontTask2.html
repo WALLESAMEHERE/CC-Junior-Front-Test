@@ -13,7 +13,6 @@
   <!-- STYLE CSS -->
   <style type="text/css">
       .container{
-        height: 100vh;
         display: flex;
         display: -webkit-flex;  
         -webkit-align-items: center;
@@ -55,6 +54,10 @@
       button:hover{
         background-color: #ffb2b2;
       }
+      p{
+        color: #109137;
+        font-size: 1.5em;
+      }
       .boxWithDmg{
         color:rgb(212, 170, 91);
       font-size: 3em;
@@ -69,6 +72,7 @@
       <input type="text" placeholder="Wpisz zaklęcie" id="spell">
       <button id="castSpell">Rzuć czar</button>
       <br>
+      <p>Zadany damage</p>
       <div id="doneDamage" class="boxWithDmg"></div>
   </div>
 </body>
