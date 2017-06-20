@@ -1,12 +1,17 @@
 "use strict"
 window.onload = function() {
+    // get button cast a spell
     const castSpell = document.getElementById("castSpell");
+    // start function check spell and dmgS
     castSpell.addEventListener('click', () => {
+        // get value from input
         const yourSpell = document.getElementById("spell").value;
+        // Change the letters to lower 
         var lowerSpell = yourSpell.toLowerCase();
-        const startSpell = 'fe';
-        const endSpell = 'ai';
-        var damage = 0;
+        const startSpell = 'fe'; // first subspell
+        const endSpell = 'ai'; // last subspell
+        var damage = 0; // total dmg
+        // array with accepted spells
         var arrayWithSubspells = [
             ['fe', 1],
             ['ain', 2],
@@ -16,13 +21,18 @@ window.onload = function() {
             ['ne', 2],
             ['ai', 2],
         ];
+        // A condition that checks if there is not one of start or end spell in the value 
         if (lowerSpell.search(startSpell) === -1 || lowerSpell.search(endSpell) === -1) {
             document.getElementById('doneDamage').innerHTML = damage;
         } else {
+            // get just value from accepted start spell
             var spellFromStart = lowerSpell.match(startSpell + '.*');
             var lastSpell = spellFromStart[0].lastIndexOf(endSpell);
+            // Get only the magic spell of the whole value
             var stringSpell = spellFromStart[0].substring(0, lastSpell + 2);
-            exports.damage(stringSpell, damage, arrayWithSubspells);
+            // start fuction which check subspells,return total dmg and show damage on page
+            document.getElementById('doneDamage').innerHTML = exports.damage(stringSpell, damage, arrayWithSubspells);
+            console.log(damage);
         }
     });
     var exports = {
@@ -54,10 +64,6 @@ window.onload = function() {
                 if (doubleFe > 1) {
                     damage = 0;
                 }
-                document.getElementById('doneDamage').innerHTML = damage;
-
-            } else {
-                document.getElementById('doneDamage').innerHTML = damage;
             }
             return damage;
         }
