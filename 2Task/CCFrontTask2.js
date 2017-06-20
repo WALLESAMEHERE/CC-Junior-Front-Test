@@ -38,18 +38,17 @@ window.onload = function() {
     var exports = {
         damage: (spell, damage, arrayWithSubspells) => {
             if (spell.startsWith('fe', 0) && spell.endsWith('ai', spell.length)) {
-                var stringForNoSpells = spell;
-                var stringLength = stringForNoSpells.length;
+                var stringWithoutSpells = spell.length;
                 var doubleFe = 0;
                 // loop which cheking how many subspells include value
                 for (var i = 0; i < arrayWithSubspells.length; i++) {
                     let count = 0;
-                    var pos = stringForNoSpells.indexOf(arrayWithSubspells[i][0]);
+                    var pos = spell.indexOf(arrayWithSubspells[i][0]);
                     while (pos > -1) {
                         ++count;
-                        pos = stringForNoSpells.indexOf(arrayWithSubspells[i][0], ++pos);
+                        pos = spell.indexOf(arrayWithSubspells[i][0], ++pos);
                         // Subtracts the length of each subspell in value, at the end returns the number of non-spell characters
-                        stringLength -= arrayWithSubspells[i][0].length;
+                        stringWithoutSpells -= arrayWithSubspells[i][0].length;
                         console.log(count, arrayWithSubspells[i][0]);
                         // condition checking how many 'fe' include magic spell
                         if (arrayWithSubspells[i][0] === 'fe') {
@@ -57,7 +56,7 @@ window.onload = function() {
                         }
                         // loop which checking if subspell with length > 3  include other subspell - 
                         for (var j = 0; j < arrayWithSubspells.length; j++) {
-                            if (arrayWithSubspells[i][0].length > 2 && arrayWithSubspells[i][0].includes(arrayWithSubspells[j][0]) && stringForNoSpells.includes(arrayWithSubspells[j][0])) {
+                            if (arrayWithSubspells[i][0].length > 2 && arrayWithSubspells[i][0].includes(arrayWithSubspells[j][0]) && spell.includes(arrayWithSubspells[j][0])) {
                                 // if condition = true, subtracts from dmg -2 because all subspells which may be in the longer string may dmg  = 2
                                 damage -= 2;
                             }
@@ -66,7 +65,8 @@ window.onload = function() {
                     // return total dmg from one subspell (Multiplies by the quantity of given subspell in magic spell)
                     damage += count * arrayWithSubspells[i][1];
                 }
-                damage -= stringLength;
+                // total dmg minus all non-spell characters / each letter = -1;
+                damage -= stringWithoutSpells;
                 // if value include more than 1 'fe' - dmg = 0;
                 if (doubleFe > 1) {
                     damage = 0;
